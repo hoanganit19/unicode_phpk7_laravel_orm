@@ -1,0 +1,11 @@
+Quan hệ 1-1
+
+Ví dụ: 1 user sẽ có 1 số điện thoại
+
+Quan 1-N
+
+Ví dụ:
+
+- 1 group sẽ có nhiều users
+- 1 post sẽ có nhiều comments
+- 1 products sẽ có nhiều commnents
