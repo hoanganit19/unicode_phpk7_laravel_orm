@@ -12,6 +12,14 @@ class Post extends Model
 
     protected $table = 'posts';
 
+    protected $fillable = ['title', 'status'];
+
+    protected $attributes = [
+        'status' => 1
+    ];
+
+    public $timestamps = false;
+
     public function categories(){
         return $this->belongsToMany(
             Category::class,

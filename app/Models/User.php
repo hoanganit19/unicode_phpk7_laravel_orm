@@ -45,12 +45,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected $with = ['group']; //Thiết lập Eager Loading mặc định
+
     public function phone(){
         return $this->hasOne(
             Phone::class,
             'user_id',
             'id'
-        );
+        )->withDefault(function ($phone){
+            $phone->phone = 'no number';
+            $phone->created_at = date('Y-m-d H:i:s');
+        });
     }
 
     public function group(){

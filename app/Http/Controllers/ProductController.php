@@ -22,6 +22,8 @@ use App\Models\Category;
 
 use App\Models\Post;
 
+use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     public function index(){
@@ -178,14 +180,92 @@ class ProductController extends Controller
 //
             $category = Category::find(2);
 
-            foreach ($category->posts as $post){
-                $date = $post->pivot->created_at;
-                echo $post->title.'<br/>';
-                echo $date.'<br/>';
-            }
+//            foreach ($category->posts as $post){
+//                $date = $post->times->created_at;
+//                echo $post->title.'<br/>';
+//                echo $date.'<br/>';
+//            }
 
 //            $post = Post::find(2);
 //
 //            dd($post->categories);
+
+//          $users = User::all();
+//          foreach ($users as $user){
+//              echo $user->name.' - '.$user->phone->phone.'<br/>';
+//          }
+
+//        $userHasPost = User::has('posts', '>=', 2)->get();
+//
+//        dd($userHasPost);
+
+//          $users = User::whereHas('posts', function($query){
+//              $query->whereStatus(0);
+//          })->get();
+
+          //$users = User::doesntHave('posts')->get();
+
+//          $users = User::withCount(['group as nhom', 'posts' => function($query){
+//               $query->whereStatus(1);
+//          }])->get();
+//
+//          dd($users);
+
+       // DB::enableQueryLog();;
+//        $users = User::with(['group' => function($query){
+//            $query->whereId(1);
+//        }, 'phone'])->get();
+
+//        $users = User::all();
+//
+//        foreach ($users as $user){
+//            echo $user->group?$user->group->name:'No'.'<br/>';
+//            //echo $user->phone->phone.'<br/>';
+//        }
+
+//        $users = User::all();
+//        $users->load('group');
+//
+//        foreach ($users as $user){
+//            echo $user->group?$user->group->name:'No'.'<br/>';
+//            //echo $user->phone->phone.'<br/>';
+//        }
+
+//        $sql = DB::getQueryLog();
+//
+//        dd($sql);
+
+        $user = User::find(1);
+
+//        $post = new Post([
+//            'title' => 'Test bài viết'
+//        ]);
+
+//        $user->posts()->saveMany([
+//            new Post(['title' => 'Test bài viết 1']),
+//            new Post(['title' => 'Test bài viết 2']),
+//            new Post(['title' => 'Test bài viết 3']),
+//        ]);
+
+        $user->posts()->create([
+            'title' => 'Bài viết 4'
+        ]);
+
+        $user->posts()->create([
+            'title' => 'Bài viết 5'
+        ]);
+
+        $user->posts()->create([
+            'title' => 'Bài viết 6'
+        ]);
+
     }
 }
+
+
+
+
+
+
+
+

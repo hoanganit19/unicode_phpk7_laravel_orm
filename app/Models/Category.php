@@ -18,7 +18,11 @@ class Category extends Model
             'posts_categories',
             'category_id',
             'post_id'
-        )->withPivot('created_at');
+        )
+            ->withPivot('created_at')
+            ->as('times');
     }
+
+
 }
 
